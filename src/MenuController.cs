@@ -41,6 +41,9 @@ static class MenuController
 		}
 
 	};
+
+	private static string CURRENT_DIFFICULTY = "Hard";
+
 	private const int MENU_TOP = 575;
 	private const int MENU_LEFT = 30;
 	private const int MENU_GAP = 0;
@@ -142,6 +145,9 @@ static class MenuController
 	{
 		//Clears the Screen to Black
 		//SwinGame.DrawText("Main Menu", Color.White, GameFont("ArialLarge"), 50, 50)
+
+		SwinGame.DrawTextLines ("Difficulty:   " + CURRENT_DIFFICULTY, Color.White, Color.Transparent, GameResources.GameFont ("MenuLarge"), FontAlignment.AlignCenter, 210, 493, SwinGame.ScreenWidth (), SwinGame.ScreenHeight ());
+		DrawButtons (MAIN_MENU);
 
 		DrawButtons (MAIN_MENU);
 	}
@@ -285,13 +291,16 @@ static class MenuController
 	{
 		switch (button) {
 		case SETUP_MENU_EASY_BUTTON:
-			GameController.SetDifficulty (AIOption.Hard);
+			GameController.SetDifficulty (AIOption.Easy);
+			CURRENT_DIFFICULTY = "EASY";
 			break;
 		case SETUP_MENU_MEDIUM_BUTTON:
-			GameController.SetDifficulty (AIOption.Hard);
+			GameController.SetDifficulty (AIOption.Medium);
+			CURRENT_DIFFICULTY = "MEDIUM";
 			break;
 		case SETUP_MENU_HARD_BUTTON:
 			GameController.SetDifficulty (AIOption.Hard);
+			CURRENT_DIFFICULTY = "HARD";
 			break;
 		}
 		//Always end state - handles exit button as well
