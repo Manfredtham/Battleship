@@ -15,7 +15,7 @@
       <File FileName="src\GameState.cs" Line="23" Column="16" />
       <File FileName="src\HighScoreController.cs" Line="135" Column="19" />
       <File FileName="src\MenuController.cs" Line="201" Column="34" />
-      <File FileName="src\UtilityFunctions.cs" Line="257" Column="3" />
+      <File FileName="src\UtilityFunctions.cs" Line="120" Column="23" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.BattleShips PreferredExecutionTarget="MonoDevelop.Default" />
