@@ -253,7 +253,7 @@ static class UtilityFunctions
 
 	public static void AddExplosion (int row, int col)
 	{
-		AddAnimation (row, col, "Splash");
+		AddAnimation (row, col, "Explosion");
 	}
 
 	public static void AddSplash (int row, int col)
@@ -311,6 +311,7 @@ static class UtilityFunctions
 		int i = 0;
 		for (i = 1; i <= ANIMATION_CELLS * FRAMES_PER_CELL; i++) {
 			UpdateAnimations ();
+			SwinGame.Delay (10);
 			GameController.DrawScreen ();
 		}
 	}
