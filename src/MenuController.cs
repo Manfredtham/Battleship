@@ -72,6 +72,9 @@ static class MenuController
 	private static readonly Color MENU_COLOR = SwinGame.RGBAColor (2, 167, 252, 255);
 
 	private static readonly Color HIGHLIGHT_COLOR = SwinGame.RGBAColor (1, 57, 86, 255);
+
+
+
 	/// <summary>
 	/// Handles the processing of user input when the main menu is showing
 	/// </summary>
@@ -128,11 +131,24 @@ static class MenuController
 				}
 			}
 
+
+			//If wiki page button is clicked
+			Point2D mouse = default (Point2D);
+
+			mouse = SwinGame.MousePosition ();
+			int mouseX = Convert.ToInt32 (mouse.X);
+			int mouseY = Convert.ToInt32 (mouse.Y);
+
+			if (mouseX > 700 && mouseX < 780 && mouseY > 200 && mouseY <246) {
+				Process.Start ("https://github.com/Manfredtham/Battleship/wiki");
+			}
+
+			//if none is clicked, end current menu
 			if (level > 0) {
-				//none clicked - so end this sub menu
 				GameController.EndCurrentState ();
 			}
 		}
+
 
 		return false;
 	}
@@ -147,6 +163,7 @@ static class MenuController
 
 		SwinGame.DrawTextLines ("Difficulty:   " + CURRENT_DIFFICULTY, Color.White, Color.Transparent, GameResources.GameFont ("MenuLarge"), FontAlignment.AlignCenter, 180, 443, SwinGame.ScreenWidth(), SwinGame.ScreenHeight());
 		DrawButtons (MAIN_MENU);
+
 	}
 
 	/// <summary>
@@ -207,10 +224,14 @@ static class MenuController
 			//SwinGame.FillRectangle (Color.White, btnLeft, btnTop, BUTTON_WIDTH, BUTTON_HEIGHT);
 			SwinGame.DrawTextLines (_menuStructure [menu] [i], MENU_COLOR, Color.Black, GameResources.GameFont ("MenuMedium"), FontAlignment.AlignCenter, btnLeft + TEXT_OFFSET, btnTop + TEXT_OFFSET, BUTTON_WIDTH, BUTTON_HEIGHT);
 
-			if (SwinGame.MouseDown (MouseButton.LeftButton) & IsMouseOverMenu (i, level, xOffset)) {
+			if (IsMouseOverMenu (i, level, xOffset)) {
 				SwinGame.DrawRectangle (HIGHLIGHT_COLOR, btnLeft, btnTop, BUTTON_WIDTH, BUTTON_HEIGHT);
 			}
 		}
+
+		//Add navigator to Group Wiki page.
+		SwinGame.DrawText ("About Us", Color.White, GameResources.GameFont ("Menu"), 695, 160);
+		SwinGame.DrawBitmap (GameResources.GameImage ("GitHub"), 700, 200);
 	}
 
 	/// <summary>

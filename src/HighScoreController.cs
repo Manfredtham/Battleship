@@ -178,9 +178,9 @@ static class HighScoreController
 			GameController.AddNewState (GameState.ViewingHighScores);
 
 			int x = 0;
-			x = SCORES_LEFT + SwinGame.TextWidth (GameResources.GameFont ("Courier"), "Name: ");
+			x = SCORES_LEFT + SwinGame.TextWidth (GameResources.GameFont ("MenuMedium"), "Name: ");
 
-			SwinGame.StartReadingText (Color.White, NAME_WIDTH, GameResources.GameFont ("Courier"), x, ENTRY_TOP);
+			SwinGame.StartReadingText (Color.White, NAME_WIDTH, GameResources.GameFont ("MenuMedium"), x, ENTRY_TOP);
 
 			//Read the text from the user
 			while (SwinGame.ReadingText ()) {
@@ -188,10 +188,9 @@ static class HighScoreController
 
 				UtilityFunctions.DrawBackground ();
 				DrawHighScores ();
-				SwinGame.DrawText ("Name: ", Color.White, GameResources.GameFont ("Courier"), SCORES_LEFT, ENTRY_TOP);
+				SwinGame.DrawText ("Name: ", Color.White, GameResources.GameFont ("MenuMedium"), SCORES_LEFT, ENTRY_TOP);
 				SwinGame.RefreshScreen ();
 			}
-
 			s.Name = SwinGame.TextReadAsASCII ();
 
 			if (s.Name.Length < 3) {
@@ -202,6 +201,7 @@ static class HighScoreController
 			_Scores.Add (s);
 			_Scores.Sort ();
 
+			SaveScores ();
 			GameController.EndCurrentState ();
 		}
 	}

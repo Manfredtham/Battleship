@@ -13,7 +13,7 @@ public static class GameResources
 
 	private static void LoadFonts ()
 	{
-		NewFont ("ArialLarge", "arial.ttf", 60);
+		NewFont ("ArialLarge", "arial.ttf", 70);
 		NewFont ("ArialSmall", "arial.ttf", 20);
 		NewFont ("CourierLarge", "cour.ttf", 24);
 		NewFont ("Courier", "cour.ttf", 16);
@@ -25,6 +25,9 @@ public static class GameResources
 
 	private static void LoadImages ()
 	{
+		//Menu
+		NewImage ("GitHub", "github.png");
+
 		//Backgrounds
 		NewImage ("Menu", "main_page.jpg");
 		NewImage ("Discovery", "discover.jpg");
