@@ -150,10 +150,12 @@ static class DeploymentController
 				}
 
 				SwinGame.DrawRectangle (Color.Black, SHIPS_LEFT, SHIPS_TOP + i * SHIPS_HEIGHT, SHIPS_WIDTH, SHIPS_HEIGHT);
-				SwinGame.DrawText (sn.ToString (), Color.White, GameResources.GameFont ("Courier"), SHIPS_LEFT + TEXT_OFFSET, SHIPS_TOP + i * SHIPS_HEIGHT);
+				SwinGame.DrawText (sn.ToString (), Color.White, GameResources.GameFont ("Menu"), SHIPS_LEFT + TEXT_OFFSET, SHIPS_TOP + i * SHIPS_HEIGHT);
 
 			}
 		}
+
+
 
 		if (GameController.HumanPlayer.ReadyToDeploy) {
 			SwinGame.DrawBitmap (GameResources.GameImage ("PlayButton"), PLAY_BUTTON_LEFT, TOP_BUTTONS_TOP);

@@ -18,7 +18,7 @@ static class HighScoreController
 {
 	private const int NAME_WIDTH = 3;
 
-	private const int SCORES_LEFT = 490;
+	private const int SCORES_LEFT = 510;
 	/// <summary>
 	/// The score structure is used to keep the name and
 	/// score of the top players together.
@@ -118,14 +118,16 @@ static class HighScoreController
 	/// </summary>
 	public static void DrawHighScores ()
 	{
-		const int SCORES_HEADING = 40;
-		const int SCORES_TOP = 80;
+		SwinGame.DrawText ("Scoreboard", Color.White, GameResources.GameFont ("ArialLarge"), 50, 50);
+
+		const int SCORES_HEADING = 70;
+		const int SCORES_TOP = 120;
 		const int SCORE_GAP = 30;
 
 		if (_Scores.Count == 0)
 			LoadScores ();
 
-		SwinGame.DrawText ("   High Scores   ", Color.White, GameResources.GameFont ("Courier"), SCORES_LEFT, SCORES_HEADING);
+		SwinGame.DrawText (" High Scores ", SwinGame.RGBAColor (2, 167, 252, 255), GameResources.GameFont ("MenuLarge"), SCORES_LEFT - 25, SCORES_HEADING);
 
 		//For all of the scores
 		int i = 0;
@@ -136,9 +138,9 @@ static class HighScoreController
 
 			//for scores 1 - 9 use 01 - 09
 			if (i < 9) {
-				SwinGame.DrawText (" " + (i + 1) + ":   " + s.Name + "   " + s.Value, Color.White, GameResources.GameFont ("Courier"), SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
+				SwinGame.DrawText (" " + (i + 1) + ":   " + s.Name + "   " + s.Value, Color.White, GameResources.GameFont ("MenuMedium"), SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
 			} else {
-				SwinGame.DrawText (i + 1 + ":   " + s.Name + "   " + s.Value, Color.White, GameResources.GameFont ("Courier"), SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
+				SwinGame.DrawText (i + 1 + ":   " + s.Name + "   " + s.Value, Color.White, GameResources.GameFont ("MenuMedium"), SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
 			}
 		}
 	}
