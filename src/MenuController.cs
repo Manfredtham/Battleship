@@ -41,7 +41,7 @@ static class MenuController
 		}
 
 	};
-	private static string CURRENT_DIFFICULTY = "Hard";
+	private static string CURRENT_DIFFICULTY = "EASY";
 
 	private const int MENU_TOP = 575;
 	private const int MENU_LEFT = 30;
