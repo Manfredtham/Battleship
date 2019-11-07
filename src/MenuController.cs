@@ -25,7 +25,7 @@ static class MenuController
 	private static readonly string [] [] _menuStructure = {
 		new string[] {
 			"PLAY",
-			"SETUP",
+			"DIFFICULTY",
 			"SCORES",
 			"QUIT"
 		},
@@ -43,11 +43,11 @@ static class MenuController
 	};
 	private static string CURRENT_DIFFICULTY = "EASY";
 
-	private const int MENU_TOP = 575;
-	private const int MENU_LEFT = 30;
-	private const int MENU_GAP = 0;
-	private const int BUTTON_WIDTH = 75;
-	private const int BUTTON_HEIGHT = 15;
+	private const int MENU_TOP = 565;
+	private const int MENU_LEFT = 50;
+	private const int MENU_GAP = 15;
+	private const int BUTTON_WIDTH = 155;
+	private const int BUTTON_HEIGHT = 25;
 	private const int BUTTON_SEP = BUTTON_WIDTH + MENU_GAP;
 
 	private const int TEXT_OFFSET = 0;
@@ -72,6 +72,9 @@ static class MenuController
 	private static readonly Color MENU_COLOR = SwinGame.RGBAColor (2, 167, 252, 255);
 
 	private static readonly Color HIGHLIGHT_COLOR = SwinGame.RGBAColor (1, 57, 86, 255);
+
+
+
 	/// <summary>
 	/// Handles the processing of user input when the main menu is showing
 	/// </summary>
@@ -128,11 +131,24 @@ static class MenuController
 				}
 			}
 
+
+			//If wiki page button is clicked
+			Point2D mouse = default (Point2D);
+
+			mouse = SwinGame.MousePosition ();
+			int mouseX = Convert.ToInt32 (mouse.X);
+			int mouseY = Convert.ToInt32 (mouse.Y);
+
+			if (mouseX > 700 && mouseX < 780 && mouseY > 200 && mouseY <246) {
+				Process.Start ("https://github.com/Manfredtham/Battleship/wiki");
+			}
+
+			//if none is clicked, end current menu
 			if (level > 0) {
-				//none clicked - so end this sub menu
 				GameController.EndCurrentState ();
 			}
 		}
+
 
 		return false;
 	}
@@ -145,8 +161,9 @@ static class MenuController
 		//Clears the Screen to Black
 		SwinGame.DrawText ("Main Menu", Color.White, GameResources.GameFont ("ArialLarge"), 50, 50);
 
-		SwinGame.DrawTextLines ("Difficulty:   " + CURRENT_DIFFICULTY, Color.White, Color.Transparent, GameResources.GameFont ("MenuLarge"), FontAlignment.AlignCenter, 210, 493, SwinGame.ScreenWidth(), SwinGame.ScreenHeight());
+		SwinGame.DrawTextLines ("Difficulty:   " + CURRENT_DIFFICULTY, Color.White, Color.Transparent, GameResources.GameFont ("MenuLarge"), FontAlignment.AlignCenter, 180, 443, SwinGame.ScreenWidth(), SwinGame.ScreenHeight());
 		DrawButtons (MAIN_MENU);
+
 	}
 
 	/// <summary>
@@ -169,7 +186,7 @@ static class MenuController
 	public static void DrawSettings ()
 	{
 		//Clears the Screen to Black
-		SwinGame.DrawText ("Settings", Color.White, GameResources.GameFont ("ArialLarge"), 50, 50);
+		SwinGame.DrawText ("Difficulty", Color.White, GameResources.GameFont ("ArialLarge"), 50, 50);
 
 		DrawButtons (MAIN_MENU);
 		DrawButtons (SETUP_MENU, 1, 1);
@@ -197,20 +214,24 @@ static class MenuController
 	/// </remarks>
 	private static void DrawButtons (int menu, int level, int xOffset)
 	{
-		int btnTop = 0;
+		int btnTop = 10;
 
 		btnTop = MENU_TOP - (MENU_GAP + BUTTON_HEIGHT) * level;
 		int i = 0;
 		for (i = 0; i <= _menuStructure [menu].Length - 1; i++) {
 			int btnLeft = 0;
 			btnLeft = MENU_LEFT + BUTTON_SEP * (i + xOffset);
-			SwinGame.FillRectangle (Color.White, btnLeft, btnTop, BUTTON_WIDTH, BUTTON_HEIGHT);
-			SwinGame.DrawTextLines (_menuStructure [menu] [i], MENU_COLOR, Color.Black, GameResources.GameFont ("Menu"), FontAlignment.AlignCenter, btnLeft + TEXT_OFFSET, btnTop + TEXT_OFFSET, BUTTON_WIDTH, BUTTON_HEIGHT);
+			//SwinGame.FillRectangle (Color.White, btnLeft, btnTop, BUTTON_WIDTH, BUTTON_HEIGHT);
+			SwinGame.DrawTextLines (_menuStructure [menu] [i], MENU_COLOR, Color.Black, GameResources.GameFont ("MenuMedium"), FontAlignment.AlignCenter, btnLeft + TEXT_OFFSET, btnTop + TEXT_OFFSET, BUTTON_WIDTH, BUTTON_HEIGHT);
 
-			if (SwinGame.MouseDown (MouseButton.LeftButton) & IsMouseOverMenu (i, level, xOffset)) {
+			if (IsMouseOverMenu (i, level, xOffset)) {
 				SwinGame.DrawRectangle (HIGHLIGHT_COLOR, btnLeft, btnTop, BUTTON_WIDTH, BUTTON_HEIGHT);
 			}
 		}
+
+		//Add navigator to Group Wiki page.
+		SwinGame.DrawText ("About Us", Color.White, GameResources.GameFont ("Menu"), 695, 160);
+		SwinGame.DrawBitmap (GameResources.GameImage ("GitHub"), 700, 200);
 	}
 
 	/// <summary>
