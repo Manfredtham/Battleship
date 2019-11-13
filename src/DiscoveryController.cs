@@ -93,6 +93,7 @@ static class DiscoveryController
 		SwinGame.DrawText (GameController.HumanPlayer.Hits.ToString (), Color.White, GameResources.GameFont ("Menu"), SCORES_LEFT, HITS_TOP);
 		SwinGame.DrawText (GameController.HumanPlayer.Missed.ToString (), Color.White, GameResources.GameFont ("Menu"), SCORES_LEFT, SPLASH_TOP);
 		SwinGame.DrawText (GameController.HumanPlayer.Score.ToString (), Color.White, GameResources.GameFont ("Menu"), SCORES_LEFT, SCORE_TOP);
+		SwinGame.DrawText (GameController.timeCount (), Color.White, GameResources.GameFont ("Menu"), 600, 72);
 
 	}
 

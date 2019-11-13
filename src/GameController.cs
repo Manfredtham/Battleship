@@ -23,6 +23,46 @@ public static class GameController
 	private static Stack<GameState> _state = new Stack<GameState> ();
 
 	private static AIOption _aiSetting;
+
+	public static Timer _timer = SwinGame.CreateTimer ();
+
+	public static Timer Timer {
+		get { return _timer; }
+	}
+
+	public static string timeCount ()
+	{
+		
+		SwinGame.StartTimer (_timer);
+		int _timeLeft = 480000;
+		_timeLeft -= (int)SwinGame.TimerTicks (_timer);
+		_timeLeft /= 1000;
+
+		if (_timeLeft < 0) {
+			_timeLeft = 0;
+			SwitchState (GameState.EndingGame);
+		}
+
+		int _mins, _secs;
+
+		_mins = _timeLeft / 60;
+		_secs = _timeLeft - (_mins * 60);
+
+		string _time;
+
+		if (_secs < 10) 
+		{
+
+			_time = _mins + ":0" + _secs;
+		} 
+		else 
+		{
+
+			_time = _mins + ":" + _secs;
+		}
+
+		return _time;
+	}
 	/// <summary>
 	/// Returns the current state of the game, indicating which screen is
 	/// currently being used

@@ -187,6 +187,7 @@ public class Player : IEnumerable<Ship>
 			case ResultOfAttack.ShotAlready:
 				_shots -= 1;
 				break;
+			case ResultOfAttack.Destroyed:
 			case ResultOfAttack.Hit:
 				_hits += 1;
 				break;
