@@ -1,19 +1,22 @@
 ﻿<Properties StartupConfiguration="{871B5A90-103A-46A5-BBB9-07C02B9851D1}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="src/Model/Player.cs">
-    <Files>
-      <File FileName="src/GameLogic.cs" Line="1" Column="1" />
-      <File FileName="src/GameResources.cs" Line="36" Column="15" />
-      <File FileName="src/GameController.cs" Line="34" Column="3" />
-      <File FileName="src/DeploymentController.cs" Line="145" Column="31" />
-      <File FileName="src/DiscoveryController.cs" Line="97" Column="3" />
-      <File FileName="src/Model/Player.cs" Line="171" Column="15" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.BattleShips PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug-Windows|x86" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="src\DiscoveryController.cs">
+    <Files>
+      <File FileName="src\GameLogic.cs" Line="1" Column="1" />
+      <File FileName="src\GameResources.cs" Line="49" Column="29" />
+      <File FileName="src\DeploymentController.cs" Line="158" Column="3" />
+      <File FileName="src\GameController.cs" Line="213" Column="57" />
+      <File FileName="src\DiscoveryController.cs" Line="89" Column="54" />
+      <File FileName="src\Model\Player.cs" Line="67" Column="20" />
+      <File FileName="src\EndingGameController.cs" Line="40" Column="94" />
+      <File FileName="src\MenuController.cs" Line="343" Column="14" />
+      <File FileName="src\Model\Ship.cs" Line="119" Column="14" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.BattleShips PreferredExecutionTarget="MonoDevelop.Default" />
 </Properties>

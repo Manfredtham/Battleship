@@ -335,6 +335,7 @@ static class MenuController
 		switch (button) {
 		case GAME_MENU_RETURN_BUTTON:
 			GameController.EndCurrentState ();
+			SwinGame.ResumeTimer (GameController.Timer);
 			break;
 		case GAME_MENU_SURRENDER_BUTTON:
 			//end game menu

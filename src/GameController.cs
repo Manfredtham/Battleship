@@ -30,38 +30,35 @@ public static class GameController
 		get { return _timer; }
 	}
 
-	public static string timeCount ()
+	public static string timeCount (int _time)
 	{
-		
-		SwinGame.StartTimer (_timer);
-		int _timeLeft = 480000;
-		_timeLeft -= (int)SwinGame.TimerTicks (_timer);
-		_timeLeft /= 1000;
+		_time -= (int)SwinGame.TimerTicks (_timer);
+		_time /= 1000;
 
-		if (_timeLeft < 0) {
-			_timeLeft = 0;
+		if (_time < 0) {
+			_time = 0;
 			SwitchState (GameState.EndingGame);
 		}
 
 		int _mins, _secs;
 
-		_mins = _timeLeft / 60;
-		_secs = _timeLeft - (_mins * 60);
+		_mins = _time / 60;
+		_secs = _time - (_mins * 60);
 
-		string _time;
+		string _timeLeft;
 
 		if (_secs < 10) 
 		{
 
-			_time = _mins + ":0" + _secs;
+			_timeLeft = _mins + ":0" + _secs;
 		} 
 		else 
 		{
 
-			_time = _mins + ":" + _secs;
+			_timeLeft = _mins + ":" + _secs;
 		}
 
-		return _time;
+		return _timeLeft;
 	}
 	/// <summary>
 	/// Returns the current state of the game, indicating which screen is
@@ -370,9 +367,13 @@ public static class GameController
 			DeploymentController.DrawDeployment ();
 			break;
 		case GameState.Discovering:
+			if (SwinGame.TimerTicks (Timer) == 0) {
+				SwinGame.StartTimer (Timer);
+			}
 			DiscoveryController.DrawDiscovery ();
 			break;
 		case GameState.EndingGame:
+			SwinGame.StopTimer (Timer);
 			EndingGameController.DrawEndOfGame ();
 			break;
 		case GameState.ViewingHighScores:
