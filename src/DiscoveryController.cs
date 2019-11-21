@@ -74,7 +74,7 @@ static class DiscoveryController
 		const int HITS_TOP = 206;
 		const int SPLASH_TOP = 256;
 		const int SCORE_TOP = 306;
-		const int TIMER_LEFT = 510;
+		const int TIMER_LEFT = 440;
 		const int TIMER_TOP = 85;
 
 		//Show enemy ships 
@@ -105,7 +105,8 @@ static class DiscoveryController
 		SwinGame.DrawText (GameController.HumanPlayer.Hits.ToString (), Color.White, GameResources.GameFont ("Menu"), SCORES_LEFT, HITS_TOP);
 		SwinGame.DrawText (GameController.HumanPlayer.Missed.ToString (), Color.White, GameResources.GameFont ("Menu"), SCORES_LEFT, SPLASH_TOP);
 		SwinGame.DrawText (GameController.HumanPlayer.Score.ToString (), Color.White, GameResources.GameFont ("Menu"), SCORES_LEFT, SCORE_TOP);
-		SwinGame.DrawText (GameController.timeCount (480000), Color.White, GameResources.GameFont ("MenuMedium"), TIMER_LEFT, TIMER_TOP);
+		SwinGame.DrawText ("Time left: ", Color.White, GameResources.GameFont ("Menu"), TIMER_LEFT, TIMER_TOP);
+		SwinGame.DrawText (GameController.timeCount (480000), Color.White, GameResources.GameFont ("MenuMedium"), TIMER_LEFT + 135, TIMER_TOP - 4);
 
 	}
 
