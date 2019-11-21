@@ -23,16 +23,30 @@ static class EndingGameController
 		UtilityFunctions.DrawField (GameController.ComputerPlayer.PlayerGrid, GameController.ComputerPlayer, true);
 		UtilityFunctions.DrawSmallField (GameController.HumanPlayer.PlayerGrid, GameController.HumanPlayer);
 
-		if (GameController.HumanPlayer.IsDestroyed) {
-			SwinGame.DrawTextLines ("YOU LOSE!", Color.White, Color.Transparent, GameResources.GameFont ("ArialLarge"), FontAlignment.AlignCenter, 0, 100, SwinGame.ScreenWidth (), SwinGame.ScreenHeight ());
+		if ((int)SwinGame.TimerTicks (GameController.Timer) >= 480000) 
+		{
+			SwinGame.DrawTextLines ("TIMES OUT! YOU LOSE!", Color.White, Color.Transparent, GameResources.GameFont ("ArialMedium"), FontAlignment.AlignCenter, 0, 100, SwinGame.ScreenWidth (), SwinGame.ScreenHeight ());
+			SwinGame.DrawTextLines ("Shots:" + GameController.HumanPlayer.Shots.ToString (), Color.White, Color.Transparent, GameResources.GameFont ("ArialSmall"), FontAlignment.AlignCenter, 0, 250, SwinGame.ScreenWidth (), SwinGame.ScreenHeight ());
+			SwinGame.DrawTextLines ("Hits:" + GameController.HumanPlayer.Hits.ToString (), Color.White, Color.Transparent, GameResources.GameFont ("ArialSmall"), FontAlignment.AlignCenter, 0, 290, SwinGame.ScreenWidth (), SwinGame.ScreenHeight ());
+			SwinGame.DrawTextLines ("Splashes:" + GameController.HumanPlayer.Missed.ToString (), Color.White, Color.Transparent, GameResources.GameFont ("ArialSmall"), FontAlignment.AlignCenter, 0, 330, SwinGame.ScreenWidth (), SwinGame.ScreenHeight ());
+			SwinGame.DrawTextLines ("Score:" + GameController.HumanPlayer.Score.ToString (), Color.White, Color.Transparent, GameResources.GameFont ("ArialSmall"), FontAlignment.AlignCenter, 0, 370, SwinGame.ScreenWidth (), SwinGame.ScreenHeight ());
+			SwinGame.DrawTextLines ("Right-Click To Quit The Game", Color.White, Color.Transparent, GameResources.GameFont ("ArialSmall"), FontAlignment.AlignCenter, 0, 460, SwinGame.ScreenWidth (), SwinGame.ScreenHeight ());
+		}
+
+		else if (GameController.HumanPlayer.IsDestroyed) 
+		{
+			SwinGame.DrawTextLines ("YOU LOSE!", Color.White, Color.Transparent, GameResources.GameFont ("ArialMedium"), FontAlignment.AlignCenter, 0, 100, SwinGame.ScreenWidth (), SwinGame.ScreenHeight ());
 			SwinGame.DrawTextLines ("Shots:" + GameController.HumanPlayer.Shots.ToString (), Color.White, Color.Transparent, GameResources.GameFont ("ArialSmall"), FontAlignment.AlignCenter, 0, 250, SwinGame.ScreenWidth (), SwinGame.ScreenHeight ());
 			SwinGame.DrawTextLines ("Hits:" + GameController.HumanPlayer.Hits.ToString (), Color.White, Color.Transparent, GameResources.GameFont ("ArialSmall"), FontAlignment.AlignCenter, 0, 290, SwinGame.ScreenWidth (), SwinGame.ScreenHeight ());
 			SwinGame.DrawTextLines ("Splashes:" + GameController.HumanPlayer.Missed.ToString (), Color.White, Color.Transparent, GameResources.GameFont ("ArialSmall"), FontAlignment.AlignCenter, 0, 330, SwinGame.ScreenWidth (), SwinGame.ScreenHeight ());
 			SwinGame.DrawTextLines ("Score:" + GameController.HumanPlayer.Score.ToString (), Color.White, Color.Transparent, GameResources.GameFont ("ArialSmall"), FontAlignment.AlignCenter, 0, 370, SwinGame.ScreenWidth (), SwinGame.ScreenHeight ());
 			SwinGame.DrawTextLines ("Right-Click To Quit The Game", Color.White, Color.Transparent, GameResources.GameFont ("ArialSmall"), FontAlignment.AlignCenter, 0, 460, SwinGame.ScreenWidth (), SwinGame.ScreenHeight ());
 
-		} else {
-			SwinGame.DrawTextLines ("-- WINNER --", Color.White, Color.Transparent, GameResources.GameFont ("ArialLarge"), FontAlignment.AlignCenter, 0, 100, SwinGame.ScreenWidth (), SwinGame.ScreenHeight ());
+		} 
+
+		else 
+		{
+			SwinGame.DrawTextLines ("-- WINNER --", Color.White, Color.Transparent, GameResources.GameFont ("ArialMedium"), FontAlignment.AlignCenter, 0, 100, SwinGame.ScreenWidth (), SwinGame.ScreenHeight ());
 			SwinGame.DrawTextLines ("Shots:" + GameController.HumanPlayer.Shots.ToString (), Color.White, Color.Transparent, GameResources.GameFont ("ArialSmall"), FontAlignment.AlignCenter, 0, 250, SwinGame.ScreenWidth (), SwinGame.ScreenHeight ());
 			SwinGame.DrawTextLines ("Hits:" + GameController.HumanPlayer.Hits.ToString (), Color.White, Color.Transparent, GameResources.GameFont ("ArialSmall"), FontAlignment.AlignCenter, 0, 290, SwinGame.ScreenWidth (), SwinGame.ScreenHeight ());
 			SwinGame.DrawTextLines ("Splashes:" + GameController.HumanPlayer.Missed.ToString (), Color.White, Color.Transparent, GameResources.GameFont ("ArialSmall"), FontAlignment.AlignCenter, 0, 330, SwinGame.ScreenWidth (), SwinGame.ScreenHeight ());

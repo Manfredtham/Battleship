@@ -23,6 +23,43 @@ public static class GameController
 	private static Stack<GameState> _state = new Stack<GameState> ();
 
 	private static AIOption _aiSetting;
+
+	public static Timer _timer = SwinGame.CreateTimer ();
+
+	public static Timer Timer {
+		get { return _timer; }
+	}
+
+	public static string timeCount (int _time)
+	{
+		_time -= (int)SwinGame.TimerTicks (_timer);
+		_time /= 1000;
+
+		if (_time < 0) {
+			_time = 0;
+			SwitchState (GameState.EndingGame);
+		}
+
+		int _mins, _secs;
+
+		_mins = _time / 60;
+		_secs = _time - (_mins * 60);
+
+		string _timeLeft;
+
+		if (_secs < 10) 
+		{
+
+			_timeLeft = _mins + ":0" + _secs;
+		} 
+		else 
+		{
+
+			_timeLeft = _mins + ":" + _secs;
+		}
+
+		return _timeLeft;
+	}
 	/// <summary>
 	/// Returns the current state of the game, indicating which screen is
 	/// currently being used
@@ -330,9 +367,13 @@ public static class GameController
 			DeploymentController.DrawDeployment ();
 			break;
 		case GameState.Discovering:
+			if (SwinGame.TimerTicks (Timer) == 0) {
+				SwinGame.StartTimer (Timer);
+			}
 			DiscoveryController.DrawDiscovery ();
 			break;
 		case GameState.EndingGame:
+			SwinGame.StopTimer (Timer);
 			EndingGameController.DrawEndOfGame ();
 			break;
 		case GameState.ViewingHighScores:

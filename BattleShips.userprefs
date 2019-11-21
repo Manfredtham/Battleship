@@ -4,21 +4,19 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="BattleShips" expanded="True">
-            <Node name="BattleShips" expanded="True">
-              <Node name="src" expanded="True">
-                <Node name="Model" expanded="True" />
-                <Node name="EndingGameController.cs" selected="True" />
-              </Node>
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
+  <MonoDevelop.Ide.Workbench ActiveDocument="src\DiscoveryController.cs">
+    <Files>
+      <File FileName="src\GameLogic.cs" Line="1" Column="1" />
+      <File FileName="src\GameResources.cs" Line="49" Column="29" />
+      <File FileName="src\DeploymentController.cs" Line="158" Column="3" />
+      <File FileName="src\GameController.cs" Line="213" Column="57" />
+      <File FileName="src\DiscoveryController.cs" Line="89" Column="54" />
+      <File FileName="src\Model\Player.cs" Line="67" Column="20" />
+      <File FileName="src\EndingGameController.cs" Line="40" Column="94" />
+      <File FileName="src\MenuController.cs" Line="343" Column="14" />
+      <File FileName="src\Model\Ship.cs" Line="119" Column="14" />
+    </Files>
   </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.BattleShips PreferredExecutionTarget="MonoDevelop.Default" />
 </Properties>
